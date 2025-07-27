@@ -1,0 +1,6 @@
+return {
+  {
+    'Mofiqul/vscode.nvim'
+  }
+}
+
