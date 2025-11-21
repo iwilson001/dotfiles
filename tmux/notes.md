@@ -4,7 +4,8 @@
 - install tmux
   - sudo apt install tmux
 - install tpm (tmux package manager)
-  - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins
+  - look at tpm README first
+  - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 - install plugins
   - enter tmux and then run `prefix I`
 
