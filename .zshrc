@@ -1,3 +1,11 @@
+# Start ssh-agent and add key if not already running
+eval "$(ssh-agent)"
+
+# Add SSH key (if not already added)
+if ! ssh-add -l | grep -q "archlinux-2025-11-23"; then
+	ssh-add ~/.ssh/archlinux-2025-11-23
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -30,4 +38,3 @@ alias p='pnpm'
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-eval $(ssh-agent)
