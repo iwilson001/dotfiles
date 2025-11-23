@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[advice]
+	defaultBranchName = false
+[user]
+	email = ianw2000ct@gmail.com
+	name = ian
+[core]
+	editor = vim

@@ -1,0 +1,50 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "b19413d",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'main'"
+    },
+    "fzf-lua": {
+      "rev": "8337813",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gruvbox": {
+      "rev": "5e0a460",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim",
+      "version": "'main'"
+    },
+    "mason.nvim": {
+      "rev": "57e5a8a",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "mini": {
+      "rev": "68d4478",
+      "src": "https://github.com/nvim-mini/mini.nvim",
+      "version": "'main'"
+    },
+    "nvim-lsp-file-operations": {
+      "rev": "9744b73",
+      "src": "https://github.com/antosha417/nvim-lsp-file-operations",
+      "version": "'master'"
+    },
+    "nvim-lspconfig": {
+      "rev": "c6f05c0",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "0cfa5994",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "oil": {
+      "rev": "7e1cd77",
+      "src": "https://github.com/stevearc/oil.nvim",
+      "version": "'master'"
+    },
+    "oil.nvim": {
+      "rev": "7e1cd77",
+      "src": "https://github.com/stevearc/oil.nvim"
+    }
+  }
+}
