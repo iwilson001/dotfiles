@@ -6,6 +6,9 @@ return {
 		require("fzf-lua").setup({
 			oldfiles = { include_current_session = true },
 			previewers = { builtin = { syntax_limit_b = ONE_HUNDRED_KB } },
+			code_actions = {
+				previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
+			},
 		})
 
 		local fzf_lua = require("fzf-lua")
@@ -15,7 +18,7 @@ return {
 		map("n", "<leader>sf", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
 		map("n", "<leader>sh", fzf_lua.grep_project, { desc = "[S]earc[h] for text in project" })
 
-        -- registers fzf-lua for ui things like code actions
+		-- registers fzf-lua for ui things like code actions
 		fzf_lua.register_ui_select()
 	end,
 }
