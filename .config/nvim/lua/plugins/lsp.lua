@@ -13,7 +13,15 @@ return {
 				vim.lsp.enable("ts_ls")
 
 				local map = vim.keymap.set
-				map({ "n" }, "K", vim.lsp.buf.hover, {})
+				-- map({ "n" }, "K", vim.lsp.buf.hover, {})
+				map("n", "K", function()
+					local diagnostics = vim.diagnostic.get(0) --, {lnum = vim.fn.line('.') -1, col = vim.fn.col('.') - 1}
+					if #diagnostics > 0 then
+						vim.diagnostic.open_float(nil) -- {focus = false}
+					else
+						vim.lsp.buf.hover()
+					end
+				end, {})
 				map("n", "<leader>cr", vim.lsp.buf.rename, {})
 				map("n", "<leader>lf", vim.lsp.buf.format, {})
 
