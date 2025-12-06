@@ -67,7 +67,6 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-local map = vim.keymap.set
 
 -- copying and deleting
 map({ "n", "x" }, "<leader>y", '"+y')
@@ -75,3 +74,13 @@ map({ "n", "x" }, "<leader>d", '"+d')
 
 -- clear highlights on search on <Esc> when in normal mode
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.api.nvim_create_autocmd("FileType", {
+	-- c – auto-wrap comments using textwidth
+	-- r – auto-insert comment leader on pressing Enter
+	-- o – auto-insert comment leader when using o or O
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+})

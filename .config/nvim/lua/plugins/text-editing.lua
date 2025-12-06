@@ -11,4 +11,16 @@ return {
 			skip_ts = { "string" },
 		},
 	},
+	{
+		"nvim-mini/mini.surround",
+		version = "*",
+		opts = {
+			mappings = {
+				-- need to include vim motion to add, ex: hello -> 'hello' requires saiw', or easier, sai"'
+				add = "sa", -- Add surrounding in Normal and Visual modes
+				delete = "sd", -- Delete surrounding
+				replace = "sr", -- Replace surrounding
+			},
+		},
+	},
 }
