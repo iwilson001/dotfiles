@@ -32,6 +32,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias lg-dotfiles='GIT_DIR=$HOME/.cfg GIT_WORK_TREE=$HOME lazygit'
 
 alias vim='nvim'
 alias p='pnpm'
