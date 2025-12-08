@@ -3,9 +3,10 @@ local ONE_HUNDRED_KB = 1024 * 100
 
 return {
 	"https://github.com/ibhagwan/fzf-lua",
-	config =  function()
+	config = function()
 		require("fzf-lua").setup({
 			-- default profiles are border-fused + hide
+			-- TODO: try adding 'bat' for better syntax highlighting
 			{ "max-perf", "border-fused", "hide" },
 			oldfiles = { include_current_session = true },
 			previewers = { builtin = { syntax_limit_b = ONE_HUNDRED_KB } },

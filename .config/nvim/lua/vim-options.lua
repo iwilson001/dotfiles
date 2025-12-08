@@ -14,7 +14,7 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- TODO: what is this?
+-- git signs column
 vim.o.signcolumn = "yes"
 
 -- Decrease update time
