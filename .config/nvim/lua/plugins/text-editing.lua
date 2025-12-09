@@ -16,10 +16,17 @@ return {
 		version = "*",
 		opts = {
 			mappings = {
-				-- need to include vim motion to add, ex: hello -> 'hello' requires saiw', or easier, sai"'
-				add = "sa", -- Add surrounding in Normal and Visual modes
-				delete = "sd", -- Delete surrounding
-				replace = "sr", -- Replace surrounding
+				add = "gsa", -- Add surrounding in Normal and Visual modes, need to include vim motion to add, ex: hello -> 'hello' requires saiw', or easier, sai"'
+				delete = "gsd", -- Delete surrounding
+				replace = "gsr", -- Replace surrounding
+
+				-- NOT USED
+				find = "", -- Find surrounding (to the right)
+				find_left = "", -- Find surrounding (to the left)
+				highlight = "", -- Highlight surrounding
+				suffix_last = "", -- Suffix to search with "prev" method
+				suffix_next = "", -- Suffix to search with "next" method
+				update_n_lines = "",
 			},
 		},
 	},

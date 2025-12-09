@@ -1,5 +1,17 @@
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+	callback = function()
+		vim.opt.relativenumber = false
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+	callback = function()
+		vim.opt.relativenumber = true
+	end,
+})
 
 vim.o.mouse = "a"
 
@@ -20,6 +32,9 @@ vim.o.signcolumn = "yes"
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
+
+-- vim.o.ttimeout = true
+-- vim.o.ttimeoutlen = 0
 
 -- Tabs vs spaces
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
