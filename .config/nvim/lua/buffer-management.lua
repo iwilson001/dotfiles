@@ -3,7 +3,7 @@ local map = vim.keymap.set
 
 map({ "n", "v" }, "<leader>ls", "<cmd>ls<CR>", { desc = "list active buffers" })
 
-map("n", "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [d]elete" })
+map({ "n", "v" }, "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [d]elete" })
 
 map("n", "<leader>bo", function()
 	-- Save cursor + window view
