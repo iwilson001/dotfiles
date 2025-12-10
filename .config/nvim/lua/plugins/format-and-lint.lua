@@ -24,9 +24,9 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				typescript = "eslint_d",
-				typescriptreact = "eslint_d",
-				javascript = "eslint_d",
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+				javascript = { "eslint_d" },
 			}
 
 			-- Create autocommand which carries out the actual linting
@@ -39,7 +39,7 @@ return {
 					-- avoid superfluous noise, notably within the handy LSP pop-ups that
 					-- describe the hovered symbol using Markdown.
 					if vim.bo.modifiable then
-						lint.try_lint()
+						lint.try_lint({})
 					end
 				end,
 			})

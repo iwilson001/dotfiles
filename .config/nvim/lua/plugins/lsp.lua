@@ -31,6 +31,14 @@ return {
 				map("n", "gy", "<cmd>FzfLua lsp_typedefs<CR>", {})
 				map("n", "gD", "<cmd>FzfLua lsp_declarations<CR>", {})
 				map("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", {})
+
+				map("n", "]d", function()
+					vim.diagnostic.jump({ count = 1, float = true })
+				end, { desc = "Next diagnostic" })
+
+				map("n", "[d", function()
+					vim.diagnostic.jump({ count = -1, float = true })
+				end, { desc = "Previous diagnostic" })
 			end,
 		},
 	},

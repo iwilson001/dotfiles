@@ -31,7 +31,7 @@ vim.o.signcolumn = "yes"
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 350
 
 -- vim.o.ttimeout = true
 -- vim.o.ttimeoutlen = 0
