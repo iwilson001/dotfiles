@@ -57,8 +57,6 @@ vim.o.scrolloff = 10
 
 vim.o.confirm = true
 
-vim.o.winborder = "rounded"
-
 vim.o.background = "dark"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
