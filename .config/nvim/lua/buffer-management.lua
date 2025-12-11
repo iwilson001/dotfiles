@@ -21,12 +21,26 @@ map("n", "<leader>bo", function()
 	vim.fn.winrestview(view)
 end, { desc = "[B]uffer [o]nly" })
 
--- map("n", "<leader>bo", function()
--- 	vim.cmd("%bd | silent! edit # | bd#")
--- end, { desc = "[B]uffer [o]nly" })
+map({ "n", "v", "x" }, "<leader>bp", "<cmd>:bprev<CR>", { desc = "[B]uffer [p]revious" })
+map({ "n", "v", "x" }, "<leader>bn", "<cmd>:bnext<CR>", { desc = "[B]uffer [n]ext" })
 
-map({ "n" }, "<leader>bp", "<cmd>:bprev<CR>", { desc = "[B]uffer [p]revious" })
-map({ "n" }, "<leader>bn", "<cmd>:bnext<CR>", { desc = "[B]uffer [n]ext" })
+map({ "n", "v", "x" }, "<leader>bcl", function()
+	local current = vim.api.nvim_get_current_buf()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if buf < current and vim.api.nvim_buf_is_loaded(buf) then
+			pcall(vim.api.nvim_buf_delete, buf, { force = false })
+		end
+	end
+end, { desc = "[B]uffer [c]lose [l]eft" })
+
+map({ "n", "v", "x" }, "<leader>bcr", function()
+	local current = vim.api.nvim_get_current_buf()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if buf > current and vim.api.nvim_buf_is_loaded(buf) then
+			pcall(vim.api.nvim_buf_delete, buf, { force = false })
+		end
+	end
+end, { desc = "[B]uffer [c]lose [r]ight" })
 
 function BufferGoTo(index)
 	local bufs = vim.fn.getbufinfo({ buflisted = 1 })
