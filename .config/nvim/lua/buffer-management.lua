@@ -54,7 +54,7 @@ function BufferGoTo(index)
 end
 
 local MIN_BUFFER_INDEX = 1
-local MAX_BUFFER_INDEX = 5
+local MAX_BUFFER_INDEX = 9
 for i = MIN_BUFFER_INDEX, MAX_BUFFER_INDEX do
 	map("n", "<leader>" .. i, function()
 		BufferGoTo(i)
