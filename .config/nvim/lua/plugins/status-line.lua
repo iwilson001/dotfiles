@@ -11,10 +11,16 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = {
+				lualine_c = {},
+				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			tabline = {
+				lualine_a = {
 					{
 						"buffers",
-						mode = 2,
+						mode = 2, -- buffer name + index
 						buffers_color = {
 							-- -- Same values as the general color option can be used here.
 							-- active = "lualine_a_normal", -- Color for active buffer.
@@ -26,10 +32,20 @@ return {
 						},
 					},
 				},
-				lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
 			},
+			winbar = {
+				lualine_a = {
+					{
+						"filename",
+						path = 1, -- 0: name, 1: relative 2: absolute 3: absolute relative to home 4:
+						shortening_target = 100, -- makes room for other components
+					},
+				},
+				lualine_z = {
+					"lsp_status",
+				},
+			},
+			inactive_winbar = {},
 		},
 	},
 }
