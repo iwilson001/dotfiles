@@ -19,7 +19,9 @@ return {
 
 		map("n", "<leader>sf", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
 		map("n", "<leader>sh", fzf_lua.live_grep_native, { desc = "[S]earc[h] for text" })
-		map({ "n", "v", "x" }, "<leader>sr", fzf_lua.live_grep_resume, {})
+		map({ "n", "v", "x" }, "<leader>sr", function()
+			fzf_lua.live_grep_native({ resume = true })
+		end, {})
 
 		map("n", "<leader>saf", function()
 			fzf_lua.files({
