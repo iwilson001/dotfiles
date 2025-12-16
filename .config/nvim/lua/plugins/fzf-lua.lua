@@ -18,9 +18,9 @@ return {
 		local fzf_lua = require("fzf-lua")
 
 		map("n", "<leader>sf", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
-		map("n", "<leader>sh", fzf_lua.live_grep_native, { desc = "[S]earc[h] for text" })
+		map("n", "<leader>sh", fzf_lua.grep_project, { desc = "[S]earc[h] for text" })
 		map({ "n", "v", "x" }, "<leader>sr", function()
-			fzf_lua.live_grep_native({ resume = true })
+			fzf_lua.grep_project({ resume = true })
 		end, {})
 
 		map("n", "<leader>saf", function()
