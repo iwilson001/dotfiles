@@ -9,7 +9,7 @@ return {
 		"MagicDuck/grug-far.nvim",
 		-- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
 		-- additional lazy config to defer loading is not really needed...
-		config =  function()
+		config = function()
 			local grug_far = require("grug-far")
 
 			map("n", "<leader>fr", grug_far.open, {})

@@ -11,7 +11,7 @@ return {
 		completion = {
 			menu = {
 				-- don't auto show so I can manually trigger w/ <C-Space> instead
-				auto_show = false,
+				auto_show = true,
 			},
 			-- TODO: see if we want this or nah
 			-- Show documentation when selecting a completion item

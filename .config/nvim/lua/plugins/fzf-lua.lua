@@ -18,21 +18,22 @@ return {
 		local fzf_lua = require("fzf-lua")
 
 		map("n", "<leader>sf", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
-		map("n", "<leader>sh", fzf_lua.grep_project, { desc = "[S]earc[h] for text" })
-		map({ "n", "v", "x" }, "<leader>sr", function()
-			fzf_lua.grep_project({ resume = true })
-		end, {})
-
 		map("n", "<leader>saf", function()
 			fzf_lua.files({
 				cmd = "rg --files --no-ignore --hidden --follow -g '!.git'",
 			})
 		end, { desc = "[S]earch for [a]ll [f]iles" })
-		map("n", "<leader>saw", function()
-			fzf_lua.live_grep({
-				cmd = "rg --no-ignore --hidden --follow --color=never --line-number --column -g !.git",
+
+		map("n", "<leader>/", fzf_lua.live_grep_native, { desc = "global / for text" })
+		map("n", "<leader>/a", function()
+			fzf_lua.live_grep_native({
+				cmd = "rg --no-ignore --hidden --follow --color=never --line-number --column -g !.git -g !.pnpm",
 			})
-		end, { desc = "[S]earch for [a]ll [w]ords" })
+		end, { desc = "global / for [a]ll text" })
+
+		map({ "n", "v", "x" }, "<leader>sr", function()
+			fzf_lua.live_grep_native({ resume = true })
+		end, { desc = "[s]earch [r]esume" })
 
 		-- registers fzf-lua for ui things like code actions
 		fzf_lua.register_ui_select()
