@@ -28,7 +28,7 @@ return {
 					theme = "gruvbox_dark",
 					section_separators = "",
 					component_separators = "",
-					always_divide_middle = false,
+					always_divide_middle = true,
 					globalstatus = true,
 				},
 
