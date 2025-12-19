@@ -3,7 +3,14 @@ local map = vim.keymap.set
 
 map({ "n", "v", "x" }, "<leader>ls", "<cmd>ls<CR>", { desc = "list active buffers" })
 
+-- keeping bd for mental consistency, but will prob rely on <leader>q more
 map({ "n", "v", "x" }, "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [d]elete" })
+map({ "n", "v", "x" }, "<leader>q", function()
+	if vim.bo.modified then
+		vim.cmd("write")
+	end
+	vim.cmd("bdelete")
+end, { desc = "Save and delete buffer" })
 
 map("n", "<leader>bo", function()
 	-- Save cursor + window view
