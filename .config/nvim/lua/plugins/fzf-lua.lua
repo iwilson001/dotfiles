@@ -6,8 +6,8 @@ return {
 	config = function()
 		require("fzf-lua").setup({
 			-- default profiles are border-fused + hide
-			-- TODO: try adding 'bat' for better syntax highlighting
-			{ "max-perf", "border-fused", "hide" },
+			-- If perf degrades too much, we can go back to max-perf, but it not showing file titles would be annoying :/
+			{ "default-title", "border-fused", "hide" },
 			oldfiles = { include_current_session = true },
 			previewers = { builtin = { syntax_limit_b = ONE_HUNDRED_KB } },
 			code_actions = {
@@ -34,6 +34,28 @@ return {
 		map({ "n", "v", "x" }, "<leader>sr", function()
 			fzf_lua.live_grep_native({ resume = true })
 		end, { desc = "[s]earch [r]esume" })
+
+		map("n", "<leader>sd", function()
+			require("fzf-lua").files({
+				prompt = "Directories> ",
+				fd_opts = "--type d",
+			})
+		end, { desc = "Find directory" })
+
+		-- TODO: figure out if it's possible to look for dir first, then search. This code doesn't work
+		-- map("n", "<leader>sd/", function()
+		-- 	fzf_lua.files({
+		-- 		prompt = "Search in dir> ",
+		-- 		fd_opts = "--type d",
+		-- 		actions = {
+		-- 			["default"] = function(selected)
+		-- 				fzf_lua.live_grep_native({
+		-- 					cwd = selected[1],
+		-- 				})
+		-- 			end,
+		-- 		},
+		-- 	})
+		-- end, {})
 
 		-- registers fzf-lua for ui things like code actions
 		fzf_lua.register_ui_select()

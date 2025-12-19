@@ -13,7 +13,7 @@ return {
 				-- TODO: add formatters for: html, css, md
 			},
 			format_on_save = {
-				timeout_ms = 500,
+				timeout_ms = 3000,
 				lsp_format = "fallback",
 			},
 		},

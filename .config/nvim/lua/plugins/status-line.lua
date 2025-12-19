@@ -28,6 +28,8 @@ return {
 					theme = "gruvbox_dark",
 					section_separators = "",
 					component_separators = "",
+					always_divide_middle = false,
+					globalstatus = true,
 				},
 
 				sections = {
@@ -48,6 +50,7 @@ return {
 						{
 							"buffers",
 							mode = 2, -- buffer name + index
+							max_length = vim.o.columns,
 							buffers_color = {
 								-- -- Same values as the general color option can be used here.
 								-- active = "lualine_a_normal", -- Color for active buffer.
