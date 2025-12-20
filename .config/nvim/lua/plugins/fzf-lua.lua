@@ -17,8 +17,8 @@ return {
 
 		local fzf_lua = require("fzf-lua")
 
-		map("n", "<leader>sf", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
-		map("n", "<leader>saf", function()
+		map("n", "<leader>/f", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
+		map("n", "<leader>/af", function()
 			fzf_lua.files({
 				cmd = "rg --files --no-ignore --hidden --follow -g '!.git'",
 			})
@@ -31,19 +31,18 @@ return {
 			})
 		end, { desc = "global / for [a]ll text" })
 
-		map({ "n", "v", "x" }, "<leader>sr", function()
+		map({ "n", "v", "x" }, "<leader>/r", function()
 			fzf_lua.live_grep_native({ resume = true })
 		end, { desc = "[s]earch [r]esume" })
 
-		map("n", "<leader>sd", function()
+		map("n", "<leader>/d", function()
 			require("fzf-lua").files({
-				prompt = "Directories> ",
 				fd_opts = "--type d",
 			})
 		end, { desc = "Find directory" })
 
 		-- TODO: figure out if it's possible to look for dir first, then search. This code doesn't work
-		-- map("n", "<leader>sd/", function()
+		-- map("n", "<leader>/d/", function()
 		-- 	fzf_lua.files({
 		-- 		prompt = "Search in dir> ",
 		-- 		fd_opts = "--type d",

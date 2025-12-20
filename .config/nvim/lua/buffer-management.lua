@@ -5,12 +5,21 @@ map({ "n", "v", "x" }, "<leader>ls", "<cmd>ls<CR>", { desc = "list active buffer
 
 -- keeping bd for mental consistency, but will prob rely on <leader>q more
 map({ "n", "v", "x" }, "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [d]elete" })
+
+map({ "n", "v", "x" }, "<leader>w", function()
+	if vim.bo.modified then
+		vim.cmd("write")
+	end
+end, {})
 map({ "n", "v", "x" }, "<leader>q", function()
+	vim.cmd("bdelete")
+end, { desc = "Save and delete buffer" })
+map({ "n", "v", "x" }, "<leader>wq", function()
 	if vim.bo.modified then
 		vim.cmd("write")
 	end
 	vim.cmd("bdelete")
-end, { desc = "Save and delete buffer" })
+end, {})
 
 map("n", "<leader>bo", function()
 	-- Save cursor + window view

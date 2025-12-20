@@ -33,9 +33,6 @@ vim.o.signcolumn = "yes"
 vim.o.updatetime = 250
 vim.o.timeoutlen = 350
 
--- vim.o.ttimeout = true
--- vim.o.ttimeoutlen = 0
-
 -- Tabs vs spaces
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
@@ -99,3 +96,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.opt.termguicolors = true
+
+-- # spelling
+-- `]s` next misspelled word
+-- `[s` previous misspelled word
+-- `zg` add word to spellfile
+-- `zw` mark word as incorrect
+-- `z=` suggestions for misspelled word
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+-- resolves to: ~/.config/nvim/spell/en.utf-8.add
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
