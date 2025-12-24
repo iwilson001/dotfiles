@@ -34,3 +34,5 @@ wo
 foldexpr
 lua
 nvim
+dotfiles
+symlink
