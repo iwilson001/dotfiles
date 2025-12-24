@@ -36,3 +36,9 @@ lua
 nvim
 dotfiles
 symlink
+lazygit
+cli
+tmux
+ripgrep
+fd
+fzf
