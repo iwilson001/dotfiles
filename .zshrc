@@ -30,10 +30,6 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias lg-dotfiles='GIT_DIR=$HOME/.cfg GIT_WORK_TREE=$HOME lazygit'
-
 alias vim='nvim'
 alias p='pnpm'
 
