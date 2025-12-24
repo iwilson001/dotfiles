@@ -8,6 +8,7 @@ return {
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
 				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+				svelte = { "prettierd", "prettier", stop_after_first = true },
 				-- TODO: check if this is the desired formatter for JSON
 				json = { "prettierd", "prettier", stop_after_first = true },
 				-- TODO: add formatters for: html, css, md
@@ -27,6 +28,7 @@ return {
 				typescript = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
 				javascript = { "eslint_d" },
+				svelte = { "eslint_d" },
 			}
 
 			-- Create autocommand which carries out the actual linting

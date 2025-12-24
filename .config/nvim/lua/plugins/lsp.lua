@@ -1,7 +1,7 @@
 return {
 	"mason-org/mason-lspconfig.nvim",
 	opts = {
-		ensure_installed = { "lua_ls", "cssls", "ts_ls", "stylua" },
+		ensure_installed = { "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "rust_analyzer" },
 	},
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} },
@@ -9,8 +9,7 @@ return {
 			"neovim/nvim-lspconfig",
 			dependencies = { "https://github.com/ibhagwan/fzf-lua" },
 			config = function()
-				vim.lsp.enable("lua_ls")
-				vim.lsp.enable("ts_ls")
+				vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte" })
 
 				local map = vim.keymap.set
 				map("n", "K", function()

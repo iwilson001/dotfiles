@@ -36,8 +36,8 @@ return {
 		end, { desc = "[s]earch [r]esume" })
 
 		map("n", "<leader>/d", function()
-			require("fzf-lua").files({
-				fd_opts = "--type d",
+			fzf_lua.files({
+				fd_opts = '--type d --exclude ".git"',
 			})
 		end, { desc = "Find directory" })
 
