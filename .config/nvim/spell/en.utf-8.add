@@ -42,3 +42,13 @@ tmux
 ripgrep
 fd
 fzf
+filetype
+formatter
+formatters
+html
+css
+md
+autocommand
+linter
+LSP
+io

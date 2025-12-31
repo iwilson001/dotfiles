@@ -1,10 +1,20 @@
 return {
 	"mason-org/mason-lspconfig.nvim",
 	opts = {
-		ensure_installed = { "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "rust_analyzer" },
+		ensure_installed = {
+			"lua_ls",
+			"cssls",
+			"ts_ls",
+			"stylua",
+			"svelte",
+			"rust_analyzer",
+		},
 	},
 	dependencies = {
-		{ "mason-org/mason.nvim", opts = {} },
+		{
+			"mason-org/mason.nvim",
+			opts = {},
+		},
 		{
 			"neovim/nvim-lspconfig",
 			dependencies = { "https://github.com/ibhagwan/fzf-lua" },

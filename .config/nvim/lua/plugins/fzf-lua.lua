@@ -24,15 +24,28 @@ return {
 			})
 		end, { desc = "[S]earch for [a]ll [f]iles" })
 
-		map("n", "<leader>/", fzf_lua.live_grep_native, { desc = "global / for text" })
+		map("n", "<leader>/", function()
+			require("fzf-lua").live_grep({
+				rg_opts = table.concat({
+					"--column",
+					"--line-number",
+					"--no-heading",
+					"--color=always",
+					"--smart-case",
+					"--hidden",
+					"--follow",
+					"--glob=!.git/*",
+				}, " "),
+			})
+		end, { desc = "global / for text" })
 		map("n", "<leader>/a", function()
-			fzf_lua.live_grep_native({
+			fzf_lua.live_grep({
 				cmd = "rg --no-ignore --hidden --follow --color=never --line-number --column -g !.git -g !.pnpm",
 			})
 		end, { desc = "global / for [a]ll text" })
 
 		map({ "n", "v", "x" }, "<leader>/r", function()
-			fzf_lua.live_grep_native({ resume = true })
+			fzf_lua.live_grep({ resume = true })
 		end, { desc = "[s]earch [r]esume" })
 
 		map("n", "<leader>/d", function()

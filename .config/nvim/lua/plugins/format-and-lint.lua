@@ -1,23 +1,49 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		opts = {
-			formatters_by_ft = {
-				-- figure out current file type w/ `:set filetype?`
-				lua = { "stylua" },
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
-				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-				svelte = { "prettierd", "prettier", stop_after_first = true },
-				-- TODO: check if this is the desired formatter for JSON
-				json = { "prettierd", "prettier", stop_after_first = true },
-				-- TODO: add formatters for: html, css, md
-			},
-			format_on_save = {
-				timeout_ms = 3000,
-				lsp_format = "fallback",
-			},
-		},
+		config = function()
+			-- local util = require("conform.util")
+
+			require("conform").setup({
+				formatters_by_ft = {
+					-- figure out current file type w/ `:set filetype?`
+					lua = { "stylua" },
+					javascript = { "prettierd", "prettier", stop_after_first = true },
+					typescript = { "prettierd", "prettier", stop_after_first = true },
+					typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+					svelte = { "prettierd", "prettier", stop_after_first = true },
+					-- TODO: check if this is the desired formatter for JSON
+					json = { "prettierd", "prettier", stop_after_first = true },
+					-- TODO: add formatters for: html, css, md
+				},
+
+				format_on_save = {
+					timeout_ms = 3000,
+					lsp_format = "fallback",
+				},
+
+				-- TODO: is this still needed?
+				-- ran into an issue where I had to kill prettierd to solve the problem
+				-- formatters = {
+				-- 	prettierd = {
+				-- 		command = "prettierd",
+				-- 		cwd = util.root_file({
+				-- 			"package.json",
+				-- 			"pnpm-lock.yaml",
+				-- 			".git",
+				-- 		}),
+				-- 	},
+				-- 	prettier = {
+				-- 		command = "prettier",
+				-- 		cwd = util.root_file({
+				-- 			"package.json",
+				-- 			"pnpm-lock.yaml",
+				-- 			".git",
+				-- 		}),
+				-- 	},
+				-- },
+			})
+		end,
 	},
 	{
 		"mfussenegger/nvim-lint",
