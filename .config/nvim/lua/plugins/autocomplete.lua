@@ -1,5 +1,6 @@
 return {
 	{
+		-- to authenticate, run `:Copilot auth`
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
