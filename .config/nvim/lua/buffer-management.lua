@@ -7,9 +7,7 @@ map({ "n", "v", "x" }, "<leader>ls", "<cmd>ls<CR>", { desc = "list active buffer
 map({ "n", "v", "x" }, "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [d]elete" })
 
 map({ "n", "v", "x" }, "<leader>w", function()
-	if vim.bo.modified then
-		vim.cmd("write")
-	end
+	vim.cmd("write")
 end, {})
 map({ "n", "v", "x" }, "<leader>q", function()
 	vim.cmd("bdelete")
