@@ -53,3 +53,11 @@ linter
 LSP
 io
 auth
+zsh
+usr
+chsh
+p10k
+zshrc
+bak
+mv
+sudo
