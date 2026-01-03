@@ -11,4 +11,7 @@ tmux send-keys -t $SESSION:root "cd $ROOT" C-m
 tmux new-window -t $SESSION -n vim
 tmux send-keys -t $SESSION:vim "cd $ROOT && nvim" C-m
 
+tmux new-window -t $SESSION -n git
+tmux send-keys -t $SESSION:git "cd ~/repos/dotfiles/" C-m
+
 tmux attach -t $SESSION
