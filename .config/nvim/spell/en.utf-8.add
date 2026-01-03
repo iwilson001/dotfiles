@@ -52,3 +52,4 @@ autocommand
 linter
 LSP
 io
+auth
