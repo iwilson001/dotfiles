@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SESSION=nvim-config
-ROOT=~/.config/nvim/
+ROOT=~/repos/dotfiles/.config/nvim
 
 tmux has-session -t $SESSION 2>/dev/null && exec tmux attach -t $SESSION
 
@@ -10,8 +10,5 @@ tmux send-keys -t $SESSION:root "cd $ROOT" C-m
 
 tmux new-window -t $SESSION -n vim
 tmux send-keys -t $SESSION:vim "cd $ROOT && nvim" C-m
-
-tmux new-window -t $SESSION -n git
-tmux send-keys -t $SESSION:git "cd ~/repos/dotfiles/" C-m
 
 tmux attach -t $SESSION
