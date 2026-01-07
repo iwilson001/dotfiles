@@ -6,12 +6,26 @@ return {
 	config = function()
 		require("fzf-lua").setup({
 			-- default profiles are border-fused + hide
-			-- If perf degrades too much, we can go back to max-perf, but it not showing file titles would be annoying :/
-			{ "default-title", "border-fused", "hide" },
+			-- If perf degrades too much, we can go back to borderless, but it not showing file titles would be annoying :/
+			{ "borderless-full", "hide" },
 			oldfiles = { include_current_session = true },
 			previewers = { builtin = { syntax_limit_b = ONE_HUNDRED_KB } },
 			code_actions = {
 				previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
+			},
+			files = {
+				formatter = "path.filename_first",
+			},
+			winopts = {
+				height = 0.9,
+				width = 0.9,
+				preview = {
+					-- TODO: remove one of these height settings
+					-- layout = "horizontal",
+					-- horizontal = "right:50%",
+					layout = "vertical",
+					vertical = "down:70%",
+				},
 			},
 		})
 
