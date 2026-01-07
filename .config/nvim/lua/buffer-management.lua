@@ -35,9 +35,6 @@ map("n", "<leader>bo", function()
 	vim.fn.winrestview(view)
 end, { desc = "[B]uffer [o]nly" })
 
-map({ "n", "v", "x" }, "<leader>bp", "<cmd>:bprev<CR>", { desc = "[B]uffer [p]revious" })
-map({ "n", "v", "x" }, "<leader>bn", "<cmd>:bnext<CR>", { desc = "[B]uffer [n]ext" })
-
 map({ "n", "v", "x" }, "<leader>bcl", function()
 	local current = vim.api.nvim_get_current_buf()
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
