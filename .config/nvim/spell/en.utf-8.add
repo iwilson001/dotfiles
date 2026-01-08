@@ -62,3 +62,7 @@ bak
 mv
 sudo
 ipairs
+perf
+dir
+cwd
+ui
