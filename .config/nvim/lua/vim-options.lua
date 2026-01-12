@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 local map = vim.keymap.set
 
 -- copying and deleting
@@ -76,7 +76,7 @@ map({ "n", "x" }, "<leader>d", '"+d')
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
 -- copying and deleting
 map({ "n", "x" }, "<leader>y", '"+y')
