@@ -64,8 +64,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
 local map = vim.keymap.set
 
 -- copying and deleting
