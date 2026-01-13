@@ -68,21 +68,6 @@ return {
 			})
 		end, { desc = "Find directory" })
 
-		-- TODO: figure out if it's possible to look for dir first, then search. This code doesn't work
-		-- map("n", "<leader>/d/", function()
-		-- 	fzf_lua.files({
-		-- 		prompt = "Search in dir> ",
-		-- 		fd_opts = "--type d",
-		-- 		actions = {
-		-- 			["default"] = function(selected)
-		-- 				fzf_lua.live_grep_native({
-		-- 					cwd = selected[1],
-		-- 				})
-		-- 			end,
-		-- 		},
-		-- 	})
-		-- end, {})
-
 		-- registers fzf-lua for ui things like code actions
 		fzf_lua.register_ui_select()
 	end,
