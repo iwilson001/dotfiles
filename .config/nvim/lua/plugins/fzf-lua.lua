@@ -7,7 +7,7 @@ return {
 		require("fzf-lua").setup({
 			-- default profiles are border-fused + hide
 			-- If perf degrades too much, we can go back to borderless, but it not showing file titles would be annoying :/
-			{ "borderless-full", "hide" },
+			{ "borderless", "hide" },
 			oldfiles = { include_current_session = true },
 			previewers = { builtin = { syntax_limit_b = ONE_HUNDRED_KB } },
 			code_actions = {
@@ -30,6 +30,22 @@ return {
 		})
 
 		local fzf_lua = require("fzf-lua")
+
+		-- this WON'T work with icons because it tries to use them as part of the dir
+		map("n", "<leader>/d/", function()
+			fzf_lua.files({
+				fd_opts = '--type d --exclude ".git"',
+				actions = {
+					default = function(selected)
+						local dir = selected[1]
+						print(dir)
+						fzf_lua.live_grep({
+							cwd = dir,
+						})
+					end,
+				},
+			})
+		end, {})
 
 		map("n", "<leader>/f", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
 		map("n", "<leader>/af", function()
