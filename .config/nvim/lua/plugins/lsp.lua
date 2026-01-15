@@ -9,6 +9,7 @@ return {
 				"stylua",
 				"svelte",
 				"rust_analyzer",
+				"yamlls",
 			},
 		},
 		dependencies = {
@@ -20,7 +21,7 @@ return {
 				"neovim/nvim-lspconfig",
 				dependencies = { "https://github.com/ibhagwan/fzf-lua" },
 				config = function()
-					vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte" })
+					vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "yamlls" })
 
 					local map = vim.keymap.set
 					map("n", "K", function()
