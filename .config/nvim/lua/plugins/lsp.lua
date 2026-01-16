@@ -25,10 +25,17 @@ return {
 
 					local map = vim.keymap.set
 					map("n", "K", function()
-						local diagnostics =
-							vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1, col = vim.fn.col(".") - 1 })
-						if #diagnostics > 0 then
-							vim.diagnostic.open_float(nil) -- {focus = false}
+						local line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- 0-indexed
+						local col = vim.api.nvim_win_get_cursor(0)[2]
+						local diagnostics = vim.diagnostic.get(0, { lnum = line })
+
+						-- Filter diagnostics to only those that contain the cursor column
+						local filtered = vim.tbl_filter(function(d)
+							return col >= d.col and col < d.end_col
+						end, diagnostics)
+
+						if #filtered > 0 then
+							vim.diagnostic.open_float({ scope = "cursor", focus = false })
 						else
 							vim.lsp.buf.hover()
 						end
