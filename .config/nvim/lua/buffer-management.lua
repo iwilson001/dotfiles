@@ -9,9 +9,19 @@ map({ "n", "v", "x" }, "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [d]elete"
 map({ "n", "v", "x" }, "<leader>w", function()
 	vim.cmd("write")
 end, {})
+
 map({ "n", "v", "x" }, "<leader>q", function()
 	vim.cmd("bdelete")
-end, { desc = "Save and delete buffer" })
+end, { desc = "delete buffer" })
+
+map({ "n", "v", "x" }, "<leader>qa", function()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) then
+			pcall(vim.api.nvim_buf_delete, buf, { force = true })
+		end
+	end
+end, { desc = "delete all buffers" })
+
 map({ "n", "v", "x" }, "<leader>wq", function()
 	if vim.bo.modified then
 		vim.cmd("write")
