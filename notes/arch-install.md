@@ -7,3 +7,7 @@
   - `lsblk`
   - look for something like sda
 - `sudo dd bs=4M if=/path/to/arch.iso of=/dev/sda status=progress oflag=sync`
+
+## Install Arch
+- This works for thinkpad P15v
+- On boot spam F12 to get to boot menu and select the name of the USB we just installed the iso on to
