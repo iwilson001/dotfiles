@@ -1,7 +1,6 @@
-* Installing Arch Linux 2026
+# Installing Arch Linux 2026
 
-** Get The ISO
-
+## Get The ISO
 - Go to https://archlinux.org/download
 - Verify checksums
 - find USB on system
