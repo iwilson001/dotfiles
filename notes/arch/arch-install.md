@@ -27,3 +27,5 @@
     - simple, full disk encryption
   - LUKS on LVM
     - more complicated, specific partition encryption
+- btrfs snapshots
+  - investigate later, I wasnt using this
