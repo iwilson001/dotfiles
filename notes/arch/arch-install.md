@@ -29,3 +29,8 @@
     - more complicated, specific partition encryption
 - btrfs snapshots
   - investigate later, I wasnt using this
+- Use UKI (unified kernel image)
+- pipewire
+- swap on zram and zstd
+- systemd 
+- 
