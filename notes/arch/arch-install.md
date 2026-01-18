@@ -13,4 +13,8 @@
 - On boot spam F12 to get to boot menu and select the name of the USB we just installed the iso on to
 - wipe existing drives
 - connect to internet
-  - `iwctl 
+  - `iwctl`
+  - `device list`
+  - `station wlan0 connect 'WIFI NAME'`
+  - `station status`
+  - `exit`
