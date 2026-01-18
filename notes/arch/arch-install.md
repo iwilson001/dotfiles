@@ -33,4 +33,6 @@
 - pipewire
 - swap on zram and zstd
 - systemd 
-- 
+- power management
+  - default is fine
+  - maybe use TLP in the future 
