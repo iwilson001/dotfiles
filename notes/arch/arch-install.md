@@ -11,3 +11,6 @@
 ## Install Arch
 - This works for thinkpad P15v
 - On boot spam F12 to get to boot menu and select the name of the USB we just installed the iso on to
+- wipe existing drives
+- connect to internet
+  - `iwctl 
