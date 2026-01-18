@@ -18,3 +18,10 @@
   - `station wlan0 connect 'WIFI NAME'`
   - `station wlan0 show`
   - `exit`
+- `archinstall`
+- file system 
+  - btrfs with compression
+  - CoW only good for specific use cases
+- encryption
+  - LVM on LUKS
+  - LUKS on LVM
