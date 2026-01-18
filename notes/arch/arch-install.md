@@ -24,4 +24,6 @@
   - CoW only good for specific use cases
 - encryption
   - LVM on LUKS
+    - simple, full disk encryption
   - LUKS on LVM
+    - more complicated, specific partition encryption
