@@ -16,5 +16,5 @@
   - `iwctl`
   - `device list`
   - `station wlan0 connect 'WIFI NAME'`
-  - `station status`
+  - `station wlan0 show`
   - `exit`
