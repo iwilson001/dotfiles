@@ -31,6 +31,16 @@
   - investigate later, I wasnt using this
 - Use UKI (unified kernel image)
 - pipewire
+- Network
+  - use NetworkManager (default) but make sure to select it!
+  - useful commands
+    - `nmcli device`
+      - should see wlan0
+    - `sudo pacman -S linux-firmware`
+      - ensure linux-firmware is downloaded
+    - `nmcli device wifi list`
+    - `nmcli device wifi connect "SSID" password "password"`
+
 - swap on zram and zstd
 - systemd 
 - power management
