@@ -2,8 +2,8 @@
 eval "$(ssh-agent)"
 
 # Add SSH key (if not already added)
-if ! ssh-add -l | grep -q "archlinux-2025-11-23"; then
-	ssh-add ~/.ssh/archlinux-2025-11-23
+if ! ssh-add -l | grep -q "archian-2026-01-21"; then
+	ssh-add ~/.ssh/archian-2026-01-21
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -32,8 +32,6 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 alias vim='nvim'
 alias p='pnpm'
-
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
