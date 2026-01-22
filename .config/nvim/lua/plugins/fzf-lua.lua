@@ -48,7 +48,10 @@ return {
 		end, {})
 
 		map("n", "<leader>/f", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
-		map("n", "<leader>/af", function()
+		map("n", "<leader>/fr", function()
+			fzf_lua.files({ resume = true })
+		end, { desc = "[S]earch for [f]iles [r]esume" })
+		map("n", "<leader>/fa", function()
 			fzf_lua.files({
 				cmd = "rg --files --no-ignore --hidden --follow -g '!.git'",
 			})
@@ -68,15 +71,14 @@ return {
 				}, " "),
 			})
 		end, { desc = "global / for text" })
+		map({ "n", "v", "x" }, "<leader>/r", function()
+			fzf_lua.live_grep({ resume = true })
+		end, { desc = "[s]earch [r]esume" })
 		map("n", "<leader>/a", function()
 			fzf_lua.live_grep({
 				cmd = "rg --no-ignore --hidden --follow --color=never --line-number --column -g !.git -g !.pnpm",
 			})
 		end, { desc = "global / for [a]ll text" })
-
-		map({ "n", "v", "x" }, "<leader>/r", function()
-			fzf_lua.live_grep({ resume = true })
-		end, { desc = "[s]earch [r]esume" })
 
 		map("n", "<leader>/d", function()
 			fzf_lua.files({
