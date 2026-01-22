@@ -30,6 +30,12 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+if [ ! -d "$TPM_DIR" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR" 2> /dev/null
+fi
+
 alias vim='nvim'
 alias p='pnpm'
 
