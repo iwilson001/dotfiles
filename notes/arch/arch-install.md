@@ -45,4 +45,8 @@
 - systemd 
 - power management
   - default is fine
-  - maybe use TLP in the future 
+  - maybe use TLP in the future
+- fonts
+  - follow this to fix firefox https://wiki.archlinux.org/title/Firefox#Font_troubleshooting
+  - install noto font https://wiki.archlinux.org/title/Localization/Japanese#Fonts
+    - `sudo pacman -S noto-fonts-cjk`
