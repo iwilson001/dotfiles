@@ -50,3 +50,6 @@
   - follow this to fix firefox https://wiki.archlinux.org/title/Firefox#Font_troubleshooting
   - install noto font https://wiki.archlinux.org/title/Localization/Japanese#Fonts
     - `sudo pacman -S noto-fonts-cjk`
+- Firefox
+  - about:config
+    - ui.systemUsesDarkTheme = 1
