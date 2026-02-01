@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 require("buffer-management")
 require("console-log")
+require("tabline")
 
 require("lazy").setup({
 	-- add your plugins here

@@ -41,19 +41,19 @@ return {
 					lualine_z = { "location" },
 				},
 
-				tabline = {
-					lualine_a = {
-						{
-							"buffers",
-							mode = 2, -- buffer name + index
-							max_length = vim.o.columns,
-							buffers_color = {
-								active = { fg = "#fabd2f", bg = "#32302f" }, -- more contrast
-								inactive = { fg = "#a89984", bg = "#3c3836" },
-							},
-						},
-					},
-				},
+				-- tabline = {
+				-- 	lualine_a = {
+				-- 		{
+				-- 			"buffers",
+				-- 			mode = 2, -- buffer name + index
+				-- 			max_length = vim.o.columns,
+				-- 			buffers_color = {
+				-- 				active = { fg = "#fabd2f", bg = "#32302f" }, -- more contrast
+				-- 				inactive = { fg = "#a89984", bg = "#3c3836" },
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 
 				winbar = {
 					lualine_a = {
