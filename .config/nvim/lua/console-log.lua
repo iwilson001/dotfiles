@@ -1,15 +1,4 @@
-local function get_visual_selection()
-	-- Escape <esc> to reliably leave visual mode (optional, but good practice)
-	local esc = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
-	vim.api.nvim_feedkeys(esc, "x", false)
-
-	local vstart = vim.fn.getpos("'<")
-	local vend = vim.fn.getpos("'>")
-
-	-- Get the text region and join lines with newline
-	local visual_text = table.concat(vim.fn.getregion(vstart, vend), "\n")
-	return visual_text
-end
+local utils = require("utils")
 
 local function insert_line_below(text)
 	local row = vim.api.nvim_win_get_cursor(0)[1]
@@ -26,7 +15,7 @@ local function get_metadata(text)
 end
 
 local function console_log_visual()
-	local text = get_visual_selection()
+	local text = utils.get_visual_selection()
 	if text == "" then
 		return
 	end

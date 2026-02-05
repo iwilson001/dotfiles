@@ -1,3 +1,4 @@
+local utils = require("utils")
 local map = vim.keymap.set
 local ONE_HUNDRED_KB = 1024 * 100
 
@@ -15,6 +16,18 @@ return {
 			},
 			files = {
 				formatter = "path.filename_first",
+			},
+			grep = {
+				rg_opts = table.concat({
+					"--column",
+					"--line-number",
+					"--no-heading",
+					"--color=always",
+					"--smart-case",
+					"--hidden",
+					"--follow",
+					"--glob=!.git/*",
+				}, " "),
 			},
 			winopts = {
 				height = 0.9,
@@ -48,9 +61,11 @@ return {
 		end, {})
 
 		map("n", "<leader>/f", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
+
 		map("n", "<leader>/fr", function()
 			fzf_lua.files({ resume = true })
 		end, { desc = "[S]earch for [f]iles [r]esume" })
+
 		map("n", "<leader>/fa", function()
 			fzf_lua.files({
 				cmd = "rg --files --no-ignore --hidden --follow -g '!.git'",
@@ -58,27 +73,38 @@ return {
 		end, { desc = "[S]earch for [a]ll [f]iles" })
 
 		map("n", "<leader>/", function()
-			require("fzf-lua").live_grep({
-				rg_opts = table.concat({
-					"--column",
-					"--line-number",
-					"--no-heading",
-					"--color=always",
-					"--smart-case",
-					"--hidden",
-					"--follow",
-					"--glob=!.git/*",
-				}, " "),
-			})
+			fzf_lua.live_grep()
 		end, { desc = "global / for text" })
+
 		map({ "n", "v", "x" }, "<leader>/r", function()
 			fzf_lua.live_grep({ resume = true })
 		end, { desc = "[s]earch [r]esume" })
+
 		map("n", "<leader>/a", function()
 			fzf_lua.live_grep({
 				cmd = "rg --no-ignore --hidden --follow --color=never --line-number --column -g !.git -g !.pnpm",
 			})
 		end, { desc = "global / for [a]ll text" })
+
+		map("n", "<leader>/w", function()
+			local word = vim.fn.expand("<cword>")
+			if word == "" then
+				return
+			end
+			require("fzf-lua").live_grep({
+				search = word,
+			})
+		end, {})
+
+		map({ "v", "x" }, "<leader>/v", function()
+			local visual_selection = utils.get_visual_selection()
+			if visual_selection == "" then
+				return
+			end
+			require("fzf-lua").live_grep({
+				search = visual_selection,
+			})
+		end, {})
 
 		map("n", "<leader>/d", function()
 			fzf_lua.files({
