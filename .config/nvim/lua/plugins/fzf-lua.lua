@@ -44,17 +44,21 @@ return {
 
 		local fzf_lua = require("fzf-lua")
 
-		-- this WON'T work with icons because it tries to use them as part of the dir
 		map("n", "<leader>/d/", function()
 			fzf_lua.files({
 				fd_opts = '--type d --exclude ".git"',
 				actions = {
 					default = function(selected)
-						local dir = selected[1]
-						print(dir)
-						fzf_lua.live_grep({
-							cwd = dir,
-						})
+						local unformatted_dir = selected[1]
+
+						local parts = vim.split(unformatted_dir, "\t", { plain = true })
+
+						local ending_path = parts[1]
+						local beginning_path = parts[2]
+
+						local complete_path = beginning_path .. "/" .. ending_path
+
+						fzf_lua.live_grep({ cwd = complete_path })
 					end,
 				},
 			})
