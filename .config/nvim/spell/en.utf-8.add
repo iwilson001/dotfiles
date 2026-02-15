@@ -68,3 +68,5 @@ cwd
 ui
 impl
 freedesktop
+prerender
+export

@@ -66,6 +66,7 @@ return {
 				"jsonc",
 				"yaml",
 				"rust",
+				"svelete",
 			}
 
 			require("nvim-treesitter").install(parsers)
