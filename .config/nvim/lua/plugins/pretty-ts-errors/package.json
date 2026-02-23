@@ -1,0 +1,20 @@
+{
+  "name": "pretty-ts-errors-nvim",
+  "version": "0.1.0",
+  "description": "a package that prettifies ts diagnostics for nvim",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.ts"
+  },
+  "author": "Ian Wilson",
+  "license": "Mit",
+  "packageManager": "pnpm@10.29.3",
+  "dependencies": {
+    "@pretty-ts-errors/formatter": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "typescript": "^5.9.3"
+  }
+}

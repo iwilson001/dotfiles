@@ -35,6 +35,8 @@ return {
 						end, diagnostics)
 
 						if #filtered > 0 then
+							vim.system({ "node", "~/.config/nvim/lua/plugins/pretty-ts-errors/index.ts" }, { "hi" })
+								:wait()
 							vim.diagnostic.open_float({ scope = "cursor", focus = false })
 						else
 							vim.lsp.buf.hover()

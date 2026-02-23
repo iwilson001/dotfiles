@@ -1,0 +1,59 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@pretty-ts-errors/formatter':
+        specifier: ^0.1.7
+        version: 0.1.7(prettier@2.8.8)
+    devDependencies:
+      '@types/node':
+        specifier: ^25.3.0
+        version: 25.3.0
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+packages:
+
+  '@pretty-ts-errors/formatter@0.1.7':
+    resolution: {integrity: sha512-7oiBpTUYGQIRkLwyFnMkPD2KTdnwTJZ9QqULNbVaRq+unJ66dV8E6vbg1skcq6qBr0Y3RuszsvxVedxdgZvbJw==}
+    peerDependencies:
+      prettier: ^2.8.7
+
+  '@types/node@25.3.0':
+    resolution: {integrity: sha512-4K3bqJpXpqfg2XKGK9bpDTc6xO/xoUP/RBWS7AtRMug6zZFaRekiLzjVtAoZMquxoAbzBvy5nxQ7veS5eYzf8A==}
+
+  prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+
+snapshots:
+
+  '@pretty-ts-errors/formatter@0.1.7(prettier@2.8.8)':
+    dependencies:
+      prettier: 2.8.8
+
+  '@types/node@25.3.0':
+    dependencies:
+      undici-types: 7.18.2
+
+  prettier@2.8.8: {}
+
+  typescript@5.9.3: {}
+
+  undici-types@7.18.2: {}
