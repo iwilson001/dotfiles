@@ -44,26 +44,6 @@ return {
 
 		local fzf_lua = require("fzf-lua")
 
-		map("n", "<leader>/d/", function()
-			fzf_lua.files({
-				fd_opts = '--type d --exclude ".git"',
-				actions = {
-					default = function(selected)
-						local unformatted_dir = selected[1]
-
-						local parts = vim.split(unformatted_dir, "\t", { plain = true })
-
-						local ending_path = parts[1]
-						local beginning_path = parts[2]
-
-						local complete_path = beginning_path .. "/" .. ending_path
-
-						fzf_lua.live_grep({ cwd = complete_path })
-					end,
-				},
-			})
-		end, {})
-
 		map("n", "<leader>/f", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
 
 		map("n", "<leader>/fr", function()
