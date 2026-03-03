@@ -95,6 +95,9 @@ return {
 				fd_opts = '--type d --exclude ".git"',
 			})
 		end, { desc = "Find directory" })
+		map("n", "<leader>/dr", function()
+			fzf_lua.files({ resume = true })
+		end, { desc = "Resume directory search" })
 
 		-- registers fzf-lua for ui things like code actions
 		fzf_lua.register_ui_select()
