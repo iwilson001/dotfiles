@@ -5,3 +5,4 @@
   - This didn't work
 - Then I installed intel-media-sdk `sudo pacman -S intel-media-sdk`
   - This allowed me to record!
+- Also installed mpv to test video playback `sudo pacman -S mpv`
