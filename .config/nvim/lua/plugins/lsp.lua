@@ -29,9 +29,19 @@ return {
 						local col = vim.api.nvim_win_get_cursor(0)[2]
 						local diagnostics = vim.diagnostic.get(0, { lnum = line })
 
-						-- Filter diagnostics to only those that contain the cursor column
 						local filtered = vim.tbl_filter(function(d)
-							return col >= d.col and col < d.end_col
+							-- Filter diagnostics to only those that contain the cursor column
+							if d.lnum == d.end_lnum then
+								return col >= d.col and col < d.end_col
+							end
+							-- Multi-line diagnostic: cursor is on first line after d.col, last line before d.end_col, or any line in between
+							if line == d.lnum then
+								return col >= d.col
+							end
+							if line == d.end_lnum then
+								return col < d.end_col
+							end
+							return true
 						end, diagnostics)
 
 						if #filtered > 0 then
