@@ -63,10 +63,8 @@ return {
 				"typescript",
 				"tsx",
 				"json",
-				"jsonc",
 				"yaml",
 				"rust",
-				"svelete",
 			}
 
 			require("nvim-treesitter").install(parsers)
