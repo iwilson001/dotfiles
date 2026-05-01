@@ -19,29 +19,8 @@ return {
 
 				format_on_save = {
 					timeout_ms = 3000,
-					lsp_format = "fallback",
+					lsp_format = "never", -- previously "fallback" but this was running jsonls formatter
 				},
-
-				-- TODO: is this still needed?
-				-- ran into an issue where I had to kill prettierd to solve the problem
-				-- formatters = {
-				-- 	prettierd = {
-				-- 		command = "prettierd",
-				-- 		cwd = util.root_file({
-				-- 			"package.json",
-				-- 			"pnpm-lock.yaml",
-				-- 			".git",
-				-- 		}),
-				-- 	},
-				-- 	prettier = {
-				-- 		command = "prettier",
-				-- 		cwd = util.root_file({
-				-- 			"package.json",
-				-- 			"pnpm-lock.yaml",
-				-- 			".git",
-				-- 		}),
-				-- 	},
-				-- },
 			})
 		end,
 	},

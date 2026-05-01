@@ -1,152 +1,169 @@
 return {
 	{
+		"mason-org/mason.nvim",
+		opts = {},
+	},
+	{
+
+		"neovim/nvim-lspconfig",
+	},
+	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"cssls",
-				"ts_ls",
-				"stylua",
-				"svelte",
-				"rust_analyzer",
-				"yamlls",
-			},
-		},
 		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = {},
-			},
-			{
-				"neovim/nvim-lspconfig",
-				dependencies = { "https://github.com/ibhagwan/fzf-lua" },
-				config = function()
-					vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "yamlls", "rust_analyzer" })
-
-					local map = vim.keymap.set
-					map("n", "K", function()
-						local line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- 0-indexed
-						local col = vim.api.nvim_win_get_cursor(0)[2]
-						local diagnostics = vim.diagnostic.get(0, { lnum = line })
-
-						local filtered = vim.tbl_filter(function(d)
-							-- Filter diagnostics to only those that contain the cursor column
-							if d.lnum == d.end_lnum then
-								return col >= d.col and col < d.end_col
-							end
-							-- Multi-line diagnostic: cursor is on first line after d.col, last line before d.end_col, or any line in between
-							if line == d.lnum then
-								return col >= d.col
-							end
-							if line == d.end_lnum then
-								return col < d.end_col
-							end
-							return true
-						end, diagnostics)
-
-						if #filtered > 0 then
-							vim.diagnostic.open_float({ scope = "cursor", focus = false })
-						else
-							vim.lsp.buf.hover()
-						end
-					end, {})
-					map("n", "<leader>cr", vim.lsp.buf.rename, {})
-					map("n", "<leader>lf", vim.lsp.buf.format, {})
-
-					map("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", {})
-					map("n", "gr", "<cmd>FzfLua lsp_references<CR>", {})
-					map("n", "gI", "<cmd>FzfLua lsp_implementations<CR>", {})
-					map("n", "gy", "<cmd>FzfLua lsp_typedefs<CR>", {})
-					map("n", "gD", "<cmd>FzfLua lsp_declarations<CR>", {})
-					map("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", {})
-
-					local function goto_diagnostic_global(direction)
-						local diagnostics = vim.diagnostic.get(nil) -- nil = all buffers
-						if #diagnostics == 0 then
-							return
-						end
-
-						table.sort(diagnostics, function(a, b)
-							if a.bufnr ~= b.bufnr then
-								return a.bufnr < b.bufnr
-							end
-							if a.lnum ~= b.lnum then
-								return a.lnum < b.lnum
-							end
-							return a.col < b.col
-						end)
-
-						local cur_buf = vim.api.nvim_get_current_buf()
-						local cur_pos = vim.api.nvim_win_get_cursor(0)
-						local cur_lnum, cur_col = cur_pos[1] - 1, cur_pos[2]
-
-						local target
-
-						if direction == "next" then
-							for i = 1, #diagnostics, 1 do
-								local diagnostic = diagnostics[i]
-								local isTargetAfterCurrentBuffer = diagnostic.bufnr > cur_buf
-								if isTargetAfterCurrentBuffer then
-									target = diagnostic
-									break
-								end
-
-								local isCurrentBuffer = diagnostic.bufnr == cur_buf
-								local isTargetAfterCurrentLine = diagnostic.lnum > cur_lnum
-								local isCurrentLineNumber = diagnostic.lnum == cur_lnum
-								local isTargetAfterCurrentColumn = diagnostic.col > cur_col
-								if
-									isCurrentBuffer
-									and (
-										isTargetAfterCurrentLine or (isCurrentLineNumber and isTargetAfterCurrentColumn)
-									)
-								then
-									target = diagnostic
-									break
-								end
-							end
-							target = target or diagnostics[1]
-						else
-							for i = #diagnostics, 1, -1 do
-								local diagnostic = diagnostics[i]
-								local isTargetBeforeCurrentBuffer = diagnostic.bufnr < cur_buf
-								if isTargetBeforeCurrentBuffer then
-									target = diagnostic
-									break
-								end
-
-								local isCurrentBuffer = diagnostic.bufnr == cur_buf
-								local isTargetBeforeCurrentLine = diagnostic.lnum < cur_lnum
-								local isCurrentLineNumber = diagnostic.lnum == cur_lnum
-								local isTargetBeforeCurrentColumn = diagnostic.col < cur_col
-								if
-									isCurrentBuffer
-									and (
-										isTargetBeforeCurrentLine
-										or (isCurrentLineNumber and isTargetBeforeCurrentColumn)
-									)
-								then
-									target = diagnostic
-									break
-								end
-							end
-							target = target or diagnostics[#diagnostics]
-						end
-
-						vim.api.nvim_set_current_buf(target.bufnr)
-						vim.api.nvim_win_set_cursor(0, { target.lnum + 1, target.col })
-					end
-
-					map("n", "]d", function()
-						goto_diagnostic_global("next")
-					end, { desc = "Next diagnostic" })
-
-					map("n", "[d", function()
-						goto_diagnostic_global("prev")
-					end, { desc = "Previous diagnostic" })
-				end,
-			},
+			"mason-org/mason.nvim",
+			"neovim/nvim-lspconfig",
 		},
+		opts = {},
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "mason-org/mason.nvim" },
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"lua_ls",
+					"cssls",
+					"ts_ls",
+					"stylua",
+					"svelte",
+					"rust_analyzer",
+					"yamlls",
+					"jsonls",
+					"eslint_d",
+					"prettier",
+					"prettierd",
+				},
+			})
+
+			vim.lsp.config("jsonls", {
+				settings = {
+					json = {
+						format = {
+							enable = false,
+						},
+					},
+				},
+			})
+
+			vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "yamlls", "rust_analyzer", "jsonls" })
+
+			local map = vim.keymap.set
+			map("n", "K", function()
+				local line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- 0-indexed
+				local col = vim.api.nvim_win_get_cursor(0)[2]
+				local diagnostics = vim.diagnostic.get(0, { lnum = line })
+
+				local filtered = vim.tbl_filter(function(d)
+					-- Filter diagnostics to only those that contain the cursor column
+					if d.lnum == d.end_lnum then
+						return col >= d.col and col < d.end_col
+					end
+					-- Multi-line diagnostic: cursor is on first line after d.col, last line before d.end_col, or any line in between
+					if line == d.lnum then
+						return col >= d.col
+					end
+					if line == d.end_lnum then
+						return col < d.end_col
+					end
+					return true
+				end, diagnostics)
+
+				if #filtered > 0 then
+					vim.diagnostic.open_float({ scope = "cursor", focus = false })
+				else
+					vim.lsp.buf.hover()
+				end
+			end, {})
+			map("n", "<leader>cr", vim.lsp.buf.rename, {})
+			map("n", "<leader>lf", vim.lsp.buf.format, {})
+
+			map("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", {})
+			map("n", "gr", "<cmd>FzfLua lsp_references<CR>", {})
+			map("n", "gI", "<cmd>FzfLua lsp_implementations<CR>", {})
+			map("n", "gy", "<cmd>FzfLua lsp_typedefs<CR>", {})
+			map("n", "gD", "<cmd>FzfLua lsp_declarations<CR>", {})
+			map("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", {})
+
+			local function goto_diagnostic_global(direction)
+				local diagnostics = vim.diagnostic.get(nil) -- nil = all buffers
+				if #diagnostics == 0 then
+					return
+				end
+
+				table.sort(diagnostics, function(a, b)
+					if a.bufnr ~= b.bufnr then
+						return a.bufnr < b.bufnr
+					end
+					if a.lnum ~= b.lnum then
+						return a.lnum < b.lnum
+					end
+					return a.col < b.col
+				end)
+
+				local cur_buf = vim.api.nvim_get_current_buf()
+				local cur_pos = vim.api.nvim_win_get_cursor(0)
+				local cur_lnum, cur_col = cur_pos[1] - 1, cur_pos[2]
+
+				local target
+
+				if direction == "next" then
+					for i = 1, #diagnostics, 1 do
+						local diagnostic = diagnostics[i]
+						local isTargetAfterCurrentBuffer = diagnostic.bufnr > cur_buf
+						if isTargetAfterCurrentBuffer then
+							target = diagnostic
+							break
+						end
+
+						local isCurrentBuffer = diagnostic.bufnr == cur_buf
+						local isTargetAfterCurrentLine = diagnostic.lnum > cur_lnum
+						local isCurrentLineNumber = diagnostic.lnum == cur_lnum
+						local isTargetAfterCurrentColumn = diagnostic.col > cur_col
+						if
+							isCurrentBuffer
+							and (isTargetAfterCurrentLine or (isCurrentLineNumber and isTargetAfterCurrentColumn))
+						then
+							target = diagnostic
+							break
+						end
+					end
+					target = target or diagnostics[1]
+				else
+					for i = #diagnostics, 1, -1 do
+						local diagnostic = diagnostics[i]
+						local isTargetBeforeCurrentBuffer = diagnostic.bufnr < cur_buf
+						if isTargetBeforeCurrentBuffer then
+							target = diagnostic
+							break
+						end
+
+						local isCurrentBuffer = diagnostic.bufnr == cur_buf
+						local isTargetBeforeCurrentLine = diagnostic.lnum < cur_lnum
+						local isCurrentLineNumber = diagnostic.lnum == cur_lnum
+						local isTargetBeforeCurrentColumn = diagnostic.col < cur_col
+						if
+							isCurrentBuffer
+							and (isTargetBeforeCurrentLine or (isCurrentLineNumber and isTargetBeforeCurrentColumn))
+						then
+							target = diagnostic
+							break
+						end
+					end
+					target = target or diagnostics[#diagnostics]
+				end
+
+				vim.api.nvim_set_current_buf(target.bufnr)
+				vim.api.nvim_win_set_cursor(0, { target.lnum + 1, target.col })
+			end
+
+			map("n", "]d", function()
+				goto_diagnostic_global("next")
+			end, { desc = "Next diagnostic" })
+
+			map("n", "[d", function()
+				goto_diagnostic_global("prev")
+			end, { desc = "Previous diagnostic" })
+		end,
 	},
 	{
 		"kevinhwang91/nvim-ufo",
