@@ -1,10 +1,4 @@
-# Start ssh-agent and add key if not already running
-eval "$(ssh-agent)"
-
-# Add SSH key (if not already added)
-if ! ssh-add -l | grep -q "archian-2026-01-21"; then
-	ssh-add ~/.ssh/archian-2026-01-21
-fi
+eval "$(keychain --eval ~/.ssh/archian-2026-01-21)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
