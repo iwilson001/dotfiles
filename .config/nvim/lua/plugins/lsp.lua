@@ -48,6 +48,10 @@ return {
 
 			vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "yamlls", "rust_analyzer", "jsonls" })
 
+			if vim.lsp.config and vim.lsp.config.biome then
+				vim.lsp.enable({ "biome" })
+			end
+
 			local map = vim.keymap.set
 			map("n", "K", function()
 				local line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- 0-indexed

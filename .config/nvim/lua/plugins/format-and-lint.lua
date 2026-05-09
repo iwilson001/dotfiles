@@ -25,10 +25,9 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				typescript = { "biome", "eslint_d" },
-				typescriptreact = { "biome", "eslint_d" },
-				javascript = { "biome", "eslint_d" },
-				svelte = { "biome", "eslint_d" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+				javascript = { "eslint_d" },
 			}
 
 			-- Create autocommand which carries out the actual linting
