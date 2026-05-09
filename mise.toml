@@ -1,0 +1,15 @@
+[tasks.check]
+description = "Dry-run install (safe)"
+run = "stow -n -t ~ ."
+
+[tasks.stow]
+description = "Install dotfiles (symlink into $HOME)"
+run = "stow -t ~ ."
+
+[tasks.adopt]
+description = "Adopt existing files into the stow structure"
+run = "stow -t ~ --adopt ."
+
+[tasks.remove]
+description = "Remove stowed dotfiles"
+run = "stow -D -t ~ ."
