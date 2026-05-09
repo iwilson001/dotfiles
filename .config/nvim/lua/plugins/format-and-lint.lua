@@ -1,28 +1,23 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		config = function()
-			-- local util = require("conform.util")
+		opts = {
+			formatters_by_ft = {
+				-- figure out current file type w/ `:set filetype?`
+				lua = { "stylua" },
+				javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+				typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+				-- TODO: check if this is the desired formatter for JSON
+				json = { "biome", "prettierd", "prettier", stop_after_first = true },
+				-- TODO: add formatters for: html, css, md
+			},
 
-			require("conform").setup({
-				formatters_by_ft = {
-					-- figure out current file type w/ `:set filetype?`
-					lua = { "stylua" },
-					javascript = { "prettierd", "prettier", stop_after_first = true },
-					typescript = { "prettierd", "prettier", stop_after_first = true },
-					typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-					svelte = { "prettierd", "prettier", stop_after_first = true },
-					-- TODO: check if this is the desired formatter for JSON
-					json = { "prettierd", "prettier", stop_after_first = true },
-					-- TODO: add formatters for: html, css, md
-				},
-
-				format_on_save = {
-					timeout_ms = 3000,
-					lsp_format = "never", -- previously "fallback" but this was running jsonls formatter
-				},
-			})
-		end,
+			format_on_save = {
+				timeout_ms = 3000,
+				lsp_format = "never", -- previously "fallback" but this was running jsonls formatter
+			},
+		},
 	},
 	{
 		"mfussenegger/nvim-lint",
@@ -30,10 +25,10 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				typescript = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
-				javascript = { "eslint_d" },
-				svelte = { "eslint_d" },
+				typescript = { "biome", "eslint_d" },
+				typescriptreact = { "biome", "eslint_d" },
+				javascript = { "biome", "eslint_d" },
+				svelte = { "biome", "eslint_d" },
 			}
 
 			-- Create autocommand which carries out the actual linting

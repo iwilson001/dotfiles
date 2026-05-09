@@ -33,7 +33,6 @@ return {
 					"prettier",
 					"prettierd",
 					"astro",
-					"biome",
 				},
 			})
 
