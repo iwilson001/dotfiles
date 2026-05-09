@@ -65,6 +65,7 @@ return {
 				"json",
 				"yaml",
 				"rust",
+				"astro",
 			}
 
 			require("nvim-treesitter").install(parsers)

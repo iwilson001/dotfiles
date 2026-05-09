@@ -32,6 +32,7 @@ return {
 					"eslint_d",
 					"prettier",
 					"prettierd",
+					"astro",
 				},
 			})
 
