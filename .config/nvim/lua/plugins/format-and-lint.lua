@@ -8,9 +8,9 @@ return {
 				javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
 				typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
 				typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
-				-- TODO: check if this is the desired formatter for JSON
 				json = { "biome", "prettierd", "prettier", stop_after_first = true },
-				-- TODO: add formatters for: html, css, md
+				jsonc = { "biome", "prettierd", "prettier", stop_after_first = true },
+				astro = { "biome" },
 			},
 
 			format_on_save = {
