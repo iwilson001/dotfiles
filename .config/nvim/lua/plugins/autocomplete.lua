@@ -17,6 +17,13 @@ return {
 						accept_word = "<C-l>",
 					},
 				},
+				server_opts_overrides = {
+					settings = {
+						telemetry = {
+							telemetryLevel = "off",
+						},
+					},
+				},
 			})
 		end,
 	},
