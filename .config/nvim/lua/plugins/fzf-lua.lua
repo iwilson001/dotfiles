@@ -90,10 +90,10 @@ return {
 			})
 		end, {})
 
+		-- TODO: figure out why this is breaking oil...
+		-- Oil split could not find parent window. Please replicate whatever you just did and open an issue on github.
 		map("n", "<leader>/d", function()
-			fzf_lua.files({
-				fd_opts = '--type d --exclude ".git"',
-			})
+			fzf_lua.files({ fd_opts = '--type d --exclude ".git"' })
 		end, { desc = "Find directory" })
 		map("n", "<leader>/dr", function()
 			fzf_lua.files({ resume = true })

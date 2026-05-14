@@ -80,3 +80,5 @@ runtime
 pre
 else's
 DTOs
+noExplicitAny
+biome
