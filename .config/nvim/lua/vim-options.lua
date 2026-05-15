@@ -106,8 +106,8 @@ vim.opt.spelllang = { "en_us" }
 -- resolves to: ~/.config/nvim/spell/en.utf-8.add
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
-vim.api.nvim_create_user_command("CopyPath", function()
-	local full_path = vim.fn.glob("%:p")
+vim.api.nvim_create_user_command("CopyFilePath", function()
+	local full_path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", full_path)
 	vim.print("Filepath copied to clipboard!")
 end, { bang = false, nargs = 0, force = true, desc = "Copy current file absolute path to clipboard" })
