@@ -58,3 +58,11 @@ bindkey "^P" up-line-or-history
 autoload -Uz compinit && compinit
 
 eval "$(mise activate zsh)"
+
+# pnpm
+export PNPM_HOME="/home/ian/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
