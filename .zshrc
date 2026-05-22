@@ -53,6 +53,7 @@ zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
 bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
 
 # loads zsh completions
 autoload -Uz compinit && compinit
