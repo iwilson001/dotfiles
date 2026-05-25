@@ -66,6 +66,7 @@ return {
 				"yaml",
 				"rust",
 				"astro",
+				"terraform",
 			}
 
 			require("nvim-treesitter").install(parsers)

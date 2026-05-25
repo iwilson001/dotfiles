@@ -8,7 +8,7 @@ vim.lsp.config("jsonls", {
 	},
 })
 
-vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "yamlls", "rust_analyzer", "jsonls" })
+vim.lsp.enable({ "lua_ls", "cssls", "ts_ls", "stylua", "svelte", "yamlls", "rust_analyzer", "jsonls", "terraform-ls" })
 
 if vim.lsp.config and vim.lsp.config.biome then
 	vim.lsp.enable({ "biome" })

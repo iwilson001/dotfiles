@@ -33,6 +33,7 @@ return {
 					"prettier",
 					"prettierd",
 					"astro",
+					"terraform-ls",
 				},
 			})
 		end,
