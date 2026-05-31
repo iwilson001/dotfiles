@@ -43,6 +43,7 @@ return {
 		})
 
 		local fzf_lua = require("fzf-lua")
+		local fzf_path = require("fzf-lua.path")
 
 		map("n", "<leader>/f", fzf_lua.files, { desc = "[S]earch for [f]iles? VSCode Ctrl + p equivalent" })
 
@@ -90,10 +91,25 @@ return {
 			})
 		end, {})
 
-		-- TODO: figure out why this is breaking oil...
-		-- Oil split could not find parent window. Please replicate whatever you just did and open an issue on github.
+		local function open_selected_directory(selected, opts)
+			local entry = fzf_path.entry_to_file(selected[1], opts)
+			if not entry.path then
+				return
+			end
+
+			-- fzf-lua's default file action swaps buffers directly, which turns
+			-- directories into empty named buffers instead of invoking Oil/netrw.
+			-- keepalt ensures last buffer, '#', is not changed
+			vim.cmd.edit({ args = { entry.path }, mods = { keepalt = true } })
+		end
+
 		map("n", "<leader>/d", function()
-			fzf_lua.files({ fd_opts = '--type d --exclude ".git"' })
+			fzf_lua.files({
+				fd_opts = '--type d --exclude ".git"',
+				actions = {
+					["enter"] = open_selected_directory,
+				},
+			})
 		end, { desc = "Find directory" })
 		map("n", "<leader>/dr", function()
 			fzf_lua.files({ resume = true })
