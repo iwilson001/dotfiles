@@ -11,6 +11,9 @@ return {
 
 			map("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "Git Blame" })
 			map("n", "<leader>gbl", "<cmd>Gitsigns blame_line<CR>", { desc = "Git Blame Line" })
+			
+			map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", { desc = "Next Git Hunk" })
+			map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", { desc = "Previous Git Hunk" })
 		end,
 	},
 }
