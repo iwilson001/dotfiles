@@ -1,8 +1,6 @@
 local mainMod = "SUPER"
 local terminal = "kitty"
 local fileManager = "dolphin"
--- local menu =
--- 	"wmenu-run -b -i -f 'JetBrainsMono NL Nerd Font 11.5' -l 25 -p 'program: ' -N $COLOR_SCHEME_BACKGROUND -n $COLOR_SCHEME_FOREGROUND -m $COLOR_SCHEME_FOREGROUND -s $COLOR_SCHEME_FOREGROUND -M $COLOR_SCHEME_YELLOW -S $COLOR_SCHEME_YELLOW"
 local menu = "wmenu-run -b -i -f 'JetBrainsMono NL Nerd Font 11.5' -l 25 -p 'program: ' -N "
 	.. os.getenv("COLOR_SCHEME_BACKGROUND")
 	.. " -n "
@@ -18,7 +16,7 @@ local menu = "wmenu-run -b -i -f 'JetBrainsMono NL Nerd Font 11.5' -l 25 -p 'pro
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 
 -- TODO do we want this? or do fullscreen instead?
 -- bind = $mainMod, M, fullscreen, 1
@@ -43,7 +41,7 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 local MIN_WORKSPACE_INDEX = 1
 local MAX_WORKSPACE_INDEX = 9
 for i = MIN_WORKSPACE_INDEX, MAX_WORKSPACE_INDEX do
-	hl.bind(mainMod .. " + " .. i, hl.dsp.workspace({ workspace = i }))
+	hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
