@@ -19,7 +19,7 @@ hl.config({
 		},
 
 		repeat_delay = 240,
-		repeat_rate = 22,
+		repeat_rate = 25,
 	},
 })
 
