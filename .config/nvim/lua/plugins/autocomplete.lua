@@ -1,26 +1,42 @@
 return {
 	{
-		-- to authenticate, run `:Copilot auth`
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		dependencies = {
-			"copilotlsp-nvim/copilot-lsp",
-		},
+		"milanglacier/minuet-ai.nvim",
 		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
+			require("minuet").setup({
+				virtual_text = {
+					auto_trigger_ft = {},
 					keymap = {
-						accept = "<C-j>",
-						accept_word = "<C-l>",
+						accept = "",
+						accept_line = "<C-j>",
+						accept_n_lines = "",
+						prev = "",
+						next = "",
+						dismiss = "",
 					},
 				},
-				server_opts_overrides = {
-					settings = {
-						telemetry = {
-							telemetryLevel = "off",
+
+				provider = "openai_fim_compatible",
+				n_completions = 1, -- recommend for local model for resource saving
+				-- I recommend beginning with a small context window size and incrementally
+				-- expanding it, depending on your local computing power. A context window
+				-- of 512, serves as an good starting point to estimate your computing
+				-- power. Once you have a reliable estimate of your local computing power,
+				-- you should adjust the context window to a larger value.
+				context_window = 512,
+				request_timeout = 5,
+
+				provider_options = {
+					openai_fim_compatible = {
+						-- For Windows users, TERM may not be present in environment variables.
+						-- Consider using APPDATA instead.
+						api_key = "TERM",
+						name = "Ollama",
+						end_point = "http://localhost:11434/v1/completions",
+						-- model = 'qwen2.5-coder:7b',
+						model = "qwen2.5-coder:3b",
+						optional = {
+							max_tokens = 56,
+							top_p = 0.9,
 						},
 					},
 				},
