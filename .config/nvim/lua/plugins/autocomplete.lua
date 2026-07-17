@@ -4,14 +4,9 @@ return {
 		config = function()
 			require("minuet").setup({
 				virtual_text = {
-					auto_trigger_ft = {},
+					auto_trigger_ft = { "*" },
 					keymap = {
-						accept = "",
 						accept_line = "<C-j>",
-						accept_n_lines = "",
-						prev = "",
-						next = "",
-						dismiss = "",
 					},
 				},
 
