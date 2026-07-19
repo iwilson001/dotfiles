@@ -4,7 +4,7 @@ return {
 		-- event = "InsertEnter",
 		config = function()
 			require("minuet").setup({
-				virtual_text = {
+				virtualtext = {
 					auto_trigger_ft = { "*" },
 					keymap = {
 						accept_line = "<C-j>",
