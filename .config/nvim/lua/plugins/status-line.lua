@@ -63,9 +63,17 @@ return {
 							shortening_target = 100, -- makes room for other components
 						},
 					},
-					lualine_z = {
-						"lsp_status",
+
+					lualine_y = {
+						{
+							require("minuet.lualine"),
+							display_name = "both", -- not default, other options are: "provider" and "model"
+							provider_model_separator = ":", -- default
+							display_on_idle = true, -- default
+						},
 					},
+
+					lualine_z = { "lsp_status" },
 				},
 				inactive_winbar = {},
 			})
