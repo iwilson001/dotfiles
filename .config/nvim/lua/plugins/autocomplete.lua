@@ -1,7 +1,7 @@
 return {
 	{
 		"milanglacier/minuet-ai.nvim",
-		-- event = "InsertEnter",
+		event = "InsertEnter",
 		config = function()
 			require("minuet").setup({
 				virtualtext = {
