@@ -8,6 +8,11 @@
 - From chatgpt
    - qwen2.5-coder:3b -- laptop
    - qwen2.5-coder:7b -- normal
+   - FIM recommendations:
+        - CodeGemma 2B Code
+        - Stable Code 3B
+        - DeepSeek Coder 1.3B
+        - qwen2.5-coder:1.5b
 - Can always go more params if need more power
 
 ## Ollama commands
@@ -20,3 +25,10 @@
 - start ollama: `ollama serve`
 - run model: `ollama run <model>`
     - ex: `ollama run qwen2.5-coder:3b`
+
+## Ollama 
+- required packages: 
+    - nvidia-open
+    - ollama
+    - ollama-cuda
+    - nvidia-utils
