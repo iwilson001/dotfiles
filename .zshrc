@@ -45,7 +45,7 @@ export PATH=$PATH:$GOPATH/bin
 
 alias vim='nvim'
 alias p='pnpm'
-alias blastoff='~/scripts/tmux-home.sh && ~/scripts/tmux-website.sh && ~/scripts/tmux-dotfiles.sh && tmux a -t home'
+alias blastoff='~/scripts/tmux-home.sh && ~/scripts/tmux-website.sh && ~/scripts/tmux-dotfiles.sh && ~/scripts/tmux-tui-golf.sh && tmux a -t home'
 
 # Open buffer line in editor
 autoload -Uz edit-command-line
