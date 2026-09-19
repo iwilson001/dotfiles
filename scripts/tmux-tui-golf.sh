@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SESSION=tui-golf
+ROOT=~/repos/tui-golf
+
+tmux has-session -t $SESSION 2>/dev/null && exec tmux attach -t $SESSION
+
+tmux new-session -d -s $SESSION -n root
+tmux split-window -t $SESSION:root -h
+tmux send-keys -t $SESSION:root.1 "cd $ROOT" C-m
+tmux send-keys -t $SESSION:root.2 "cd $ROOT" C-m
+
+tmux new-window -t $SESSION -n vim
+tmux send-keys -t $SESSION:vim "cd $ROOT" C-m
