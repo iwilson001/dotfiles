@@ -66,19 +66,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 local map = vim.keymap.set
 
--- copying and deleting
-map({ "n", "x" }, "<leader>y", '"+y')
-map({ "n", "x" }, "<leader>d", '"+d')
-
 -- clear highlights on search on <Esc> when in normal mode
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- copying and deleting
-map({ "n", "x" }, "<leader>y", '"+y')
-map({ "n", "x" }, "<leader>d", '"+d')
+-- very magic search by default
+map({ "n", "x", "o" }, "/", "/\\v")
+map({ "n", "x", "o" }, "?", "?\\v")
 
 -- clear highlights on search on <Esc> when in normal mode
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
