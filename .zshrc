@@ -1,12 +1,5 @@
 eval "$(keychain add --eval --immediate ~/.ssh/archian-2026-01-21)"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
@@ -18,11 +11,24 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# Pure prompt, gruvbox colors (match ghostty palette)
+zstyle :prompt:pure:path color '#83a598'
+zstyle :prompt:pure:git:branch color '#928374'
+zstyle :prompt:pure:git:dirty color '#d79921'
+zstyle :prompt:pure:git:arrow color '#8ec07c'
+zstyle :prompt:pure:git:stash color '#8ec07c'
+zstyle :prompt:pure:git:action color '#d3869b'
+zstyle :prompt:pure:execution_time color '#fabd2f'
+zstyle :prompt:pure:host color '#a89984'
+zstyle :prompt:pure:user color '#a89984'
+zstyle :prompt:pure:user:root color '#fb4934'
+zstyle :prompt:pure:virtualenv color '#928374'
+zstyle :prompt:pure:prompt:success color '#b8bb26'
+zstyle :prompt:pure:prompt:error color '#fb4934'
+zstyle :prompt:pure:prompt:continuation color '#928374'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
 TPM_DIR="$HOME/.tmux/plugins/tpm"
 
