@@ -1,5 +1,5 @@
 local mainMod = "SUPER"
-local terminal = "kitty"
+local terminal = "ghostty"
 local fileManager = "dolphin"
 local menu = "wmenu-run -b -i -f 'JetBrainsMono NL Nerd Font 11.5' -l 25 -p 'program: ' -N "
 	.. os.getenv("COLOR_SCHEME_BACKGROUND")
