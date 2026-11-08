@@ -16,7 +16,7 @@
 -- env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
 --
 -- # Alias
--- $terminal = kitty
+-- $terminal = ghostty
 -- $fileManager = dolphin
 -- $menu = wmenu-run -b -i -f 'JetBrainsMono NL Nerd Font 11.5' -l 25 -p 'program: ' -N $COLOR_SCHEME_BACKGROUND -n $COLOR_SCHEME_FOREGROUND -m $COLOR_SCHEME_FOREGROUND -s $COLOR_SCHEME_FOREGROUND -M $COLOR_SCHEME_YELLOW -S $COLOR_SCHEME_YELLOW
 -- $browser = firefox
