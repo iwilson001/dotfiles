@@ -34,6 +34,7 @@ return {
 					"prettierd",
 					"astro",
 					"terraform-ls",
+					"zls",
 				},
 			})
 		end,
