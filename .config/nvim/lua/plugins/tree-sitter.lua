@@ -67,6 +67,7 @@ return {
 				"rust",
 				"astro",
 				"terraform",
+				"zig",
 			}
 
 			require("nvim-treesitter").install(parsers)
