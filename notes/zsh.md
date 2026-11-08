@@ -13,5 +13,4 @@
   - touch ~/.zshrc
 
 **Other**
-- To rerun p10k, use p10k command
 - To get bash back, do chsh and use /bin/bash (mine was /usr/bin/bash on another instance)

@@ -31,5 +31,4 @@ wl-clipboard
 zsh
 
 ## Also need
-- yay
-- zsh p10k
+- zsh 
