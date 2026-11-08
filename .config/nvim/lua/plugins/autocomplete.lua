@@ -1,34 +1,5 @@
 return {
 	{
-		-- to authenticate, run `:Copilot auth`
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		dependencies = {
-			"copilotlsp-nvim/copilot-lsp",
-		},
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					keymap = {
-						accept = "<C-j>",
-						accept_word = "<C-l>",
-					},
-				},
-				server_opts_overrides = {
-					settings = {
-						telemetry = {
-							telemetryLevel = "off",
-						},
-					},
-				},
-			})
-		end,
-	},
-
-	{
 		"saghen/blink.cmp",
 		version = "1.*",
 		opts = {
