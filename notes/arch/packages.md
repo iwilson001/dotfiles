@@ -12,7 +12,6 @@ fzf
 git
 impala
 just
-kitty
 lazygit
 less
 ly
