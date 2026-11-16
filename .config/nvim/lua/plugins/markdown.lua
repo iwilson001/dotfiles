@@ -1,7 +1,7 @@
 return {
 	{
-		"selimacerbas/markdown-preview.nvim",
-		dependencies = { "selimacerbas/live-server.nvim" },
+		"selimacerbas/mdkite.nvim",
+		dependencies = { "selimacerbas/kitehost.nvim" },
 		config = function()
 			require("mdkite").setup({
 				instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
