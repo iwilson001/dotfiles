@@ -14,15 +14,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#window {
-    margin-top: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
-    transition: none;
-    color: transparent;
-    background: transparent;
-}
-
 #workspaces {
     font-size: 20px;
     font-weight: 700;
